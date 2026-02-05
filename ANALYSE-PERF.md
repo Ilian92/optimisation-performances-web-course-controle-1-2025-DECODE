@@ -50,3 +50,5 @@ Pour palier aux problèmes cités précédemment on devra:
 - Avoir Symfony comme API seulement et un front-end avec un framework front
 
 - Site trop petit pour utiliser un gros framework tel que symfony. En utiliser un plus light
+
+- Installer OpCache
