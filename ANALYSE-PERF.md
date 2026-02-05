@@ -13,13 +13,14 @@ Il y aussi des images avec un format trop lourd.
 ### Cache
 Il n'y a pas de cache de la page carousel qui est effectué alors que cette page n'est pas modifié ou que peu souvent. Ce qui entraine le calcul de la page à chaque actualisation de celle-ci.
 
-### Autre
-Dans le symfony profiler, il est dit d'installer intl pour améliorer les performances.
-
 ### Lighthouse
 En utilisant LightHouse, j'ai pû voir qu'il y avait des problèmes de Render Blocking Resources à cause du CSS.
 Les images n'ont pas de headers de cache HTTP.
 Il y a aussi des problème de LCP request discovery
+
+### Autre
+Dans le symfony profiler, il est dit d'installer intl pour améliorer les performances.
+Le Dockerfile utilise apache. Cependant Nginx est plus performant qu'Apache pour les fichiers statiques
 
 ## CORRECTIFS
 Pour palier aux problèmes cités précédemment on devra:
@@ -41,3 +42,11 @@ Pour palier aux problèmes cités précédemment on devra:
 - Rajouter les headers de cache dans le Dockerfile et les fichier de .conf
 
 - Precharger le CSS pour qu'il arrête de bloquer
+
+- Passer de Apache à Nginx pour mieux gérer les fichiers statiques
+
+- Utiliser un CDN
+
+- Avoir Symfony comme API seulement et un front-end avec un framework front
+
+- Site trop petit pour utiliser un gros framework tel que symfony. En utiliser un plus light
