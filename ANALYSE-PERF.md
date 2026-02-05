@@ -21,6 +21,6 @@ Pour palier aux problèmes cités précédemment on devra:
 - Remplacer les champs modeles pour créer de vrais relations d'entités Symfony.
 - Récupérer toutes les informations voulus en une fois au lieu de faire je ne sais combien de requêtes.
 - Redimensionner les miniatures côté serveur pour ne fournir que les images à la bonne taille au navigateur. Pour cela on peut utiliser le bundle "LiipImagineBundle" qui devrait permettre de gérer cela.
-- Modifier le format des images pour qu'elles soient en webp
+- Modifier le format des images pour qu'elles soient en webp en utilisant la commande composer personnalisé "composer convert-images" et suppression des anciens fichier aux mauvais formats
 - Créer du cache pour ne pas recalculer la page à chaque fois
 - Installer intl dans le Dockerfile
