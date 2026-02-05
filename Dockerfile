@@ -2,10 +2,11 @@ FROM php:8.4-apache
 
 # PHP
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y zlib1g-dev libwebp-dev libpng-dev && docker-php-ext-install gd
-RUN apt-get install libzip-dev -y && docker-php-ext-install zip
+RUN apt-get install -y zlib1g-dev libwebp-dev libpng-dev
+RUN apt-get install -y libjpeg-dev libfreetype6-dev libicu-dev libpq-dev libzip-dev
 RUN apt-get install libpq-dev -y
-RUN docker-php-ext-install pdo pdo_pgsql
+RUN apt-get install libicu-dev 
+RUN docker-php-ext-install gd pdo pdo_pgsql intl zip
 
 # Composer
 #COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
