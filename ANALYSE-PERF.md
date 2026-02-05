@@ -16,6 +16,11 @@ Il n'y a pas de cache de la page carousel qui est effectué alors que cette page
 ### Autre
 Dans le symfony profiler, il est dit d'installer intl pour améliorer les performances.
 
+### Lighthouse
+En utilisant LightHouse, j'ai pû voir qu'il y avait des problèmes de Render Blocking Resources à cause du CSS.
+Les images n'ont pas de headers de cache HTTP.
+Il y a aussi des problème de LCP request discovery
+
 ## CORRECTIFS
 Pour palier aux problèmes cités précédemment on devra:
 
@@ -30,3 +35,9 @@ Pour palier aux problèmes cités précédemment on devra:
 - Créer un cache de la page pendant 1h pour ne pas recalculer la page à chaque fois et ne plus faire de reqête comme on peut le voir dans le symfony profiler
 
 - Installer intl dans le Dockerfile
+
+- Précharger le CSS
+
+- Rajouter les headers de cache dans le Dockerfile et les fichier de .conf
+
+- Precharger le CSS pour qu'il arrête de bloquer
