@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ModelesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ModelesRepository::class)]
@@ -11,6 +13,9 @@ class Modeles
     #[ORM\Id]
     #[ORM\Column]
     private ?string $id = null;
+
+    #[ORM\OneToMany(mappedBy: 'modeles', targetEntity: ModelesFiles::class)]
+    private Collection $modelesFiles;
 
     #[ORM\Column(length: 255)]
     private ?string $status = null;
@@ -53,6 +58,11 @@ class Modeles
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $page = null;
+
+    public function __construct()
+    {
+        $this->modelesFiles = new ArrayCollection();
+    }
 
     public function getId(): ?string
     {
@@ -225,5 +235,13 @@ class Modeles
         $this->page = $page;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, ModelesFiles>
+     */
+    public function getModelesFiles(): Collection
+    {
+        return $this->modelesFiles;
     }
 }

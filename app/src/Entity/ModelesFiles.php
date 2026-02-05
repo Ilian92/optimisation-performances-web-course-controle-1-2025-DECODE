@@ -12,37 +12,37 @@ class ModelesFiles
     #[ORM\Column]
     private ?string $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $modeles_id = null;
+    #[ORM\ManyToOne(inversedBy: 'modelesFiles')]
+    private ?Modeles $modeles = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $directus_files_id = null;
+    #[ORM\ManyToOne]
+    private ?DirectusFiles $directusFiles = null;
 
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getModelesId(): ?string
+    public function getModeles(): ?Modeles
     {
-        return $this->modeles_id;
+        return $this->modeles;
     }
 
-    public function setModelesId(string $modeles_id): static
+    public function setModeles(?Modeles $modeles): static
     {
-        $this->modeles_id = $modeles_id;
+        $this->modeles = $modeles;
 
         return $this;
     }
 
-    public function getDirectusFilesId(): ?string
+    public function getDirectusFiles(): ?DirectusFiles
     {
-        return $this->directus_files_id;
+        return $this->directusFiles;
     }
 
-    public function setDirectusFilesId(string $directus_files_id): static
+    public function setDirectusFiles(?DirectusFiles $directusFiles): static
     {
-        $this->directus_files_id = $directus_files_id;
+        $this->directusFiles = $directusFiles;
 
         return $this;
     }
